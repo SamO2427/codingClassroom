@@ -7,11 +7,12 @@ HTML / CSS / JS / PHP / MYSQL
 #### Styling used
 - Bootstrap
 - Font Awesome
+- Google Font, etc.
 
 #### Programs used
-1. LAMP server
-2. Aptana Studio 3.6.1 (nodeJS v0.11.xx required ) (or any other open source IDE)
-3. phpMyAdmin (or any tool to admin MySQL)
+1. LAMP server with phpMyAdmin
+2. Aptana Studio 3.6.1 (nodeJS v0.11.xx required, IDE) 
+3. MobaXterm (SSH to AWS ubuntu instance for Windows)
 
 #### Quick Start
 1. Fork SamO2427/codingClassroom
