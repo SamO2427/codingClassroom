@@ -1,0 +1,66 @@
+/*for index.php*/
+body {
+	font-family: 'Open Sans';
+	color: #FFF;
+	/* background can be scrolled (default)*/
+	background-attachment: scroll;
+	/*Change image if you have better one!!!*/
+	background-image: url(../img/dark.jpg);
+	background-repeat: no-repeat;
+	/*Scale the background image to compeltely cover*/
+	/*prefix refers to browser*/
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+#header {
+	/*background-color: #756;*/
+	width: 800px;
+	text-align:center;
+	/*top,bottom; auto: brower calculates right,left*/
+	margin: 0 auto;
+}
+
+#headline {
+	font-family: 'Tangerine', serif;
+  	font-size: 100px;
+  	/*text-shadow: 4px 4px 4px #aaa; */
+}
+
+#footer {
+	width: 800px;
+	height:50px;
+	background-color: #756;
+	margin: 0 auto;
+	
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+
+}
+
+#footer_text {
+	font-size: 25px;
+	padding-left: 10px;
+	padding-top: 5px;
+}
+
+#menu {
+	/*rounded-corner box*/
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	
+	width:800px;
+	height:400px;
+	
+	color: #222;
+	background-color:#EEE;
+	margin: 0 auto;
+}
+
+.form_size {
+	width: 300px;
+}
