@@ -24,6 +24,12 @@
  		<!--use favicon -->
  		<link rel="shortcut icon" href="Design/img/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="Design/img/favicon.ico" type="image/x-icon">
+		
+		<!--background music -->
+		<audio id="background_audio" autoplay="autoplay" loop="loop" >
+      		<source src="Design/bgm/village10.ogg" type="audio/ogg" />
+      		<source src="Design/bgm/village10.mp3" type="audio/mpeg" />
+    	</audio>
 	</head>
 
 	<body>
@@ -31,6 +37,7 @@
 		<div id="header">
 			<span id="headline">Coding Classroom for Kids</span>
 			<i class="fa fa-paint-brush fa-4x"></i>
+			<a href="#" class="player"><i class="fa fa-volume-up fa-3x"></i></a>
 		</div>
 		<!--Bootstrap tab-->
 		<div id="menu">
@@ -73,8 +80,39 @@
 			    </div>
 			    
 			    <div id="register" class="tab-pane fade">
-			      	<h3>Menu 1</h3>
-			      	<p>nothing</p>
+			      	
+			      	
+			      	<!--Register form -->
+					<!--<form role="form" action="account/login.php" method="post">  -->
+					<form role="form" action="" method="post">
+						
+						<div class="form-group">
+							<div class="form_size">
+								<label for="username">Username:</label>
+								<input type="text" class="form-control" id="username" name="username" required placeholder="Enter userName">
+							</div>
+						</div>
+					
+						<div class="form-group">
+							<div class="form_size">
+								<label for="password1">Password:</label>
+								<input type="password" class="form-control" id="password1" name="password1" required placeholder="Enter password">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<div class="form_size">
+								<label for="password2">Re-enter Password:</label>
+								<input type="password" class="form-control" id="password2" name="password2" required placeholder="Enter password again">
+							</div>
+						</div>
+						
+						<button type="submit" class="btn btn-default">Register</button>
+					</form>
+			      	
+			      	
+			      	
+			      	
 			    </div>
 			    
 			    <div id="setting" class="tab-pane fade">
@@ -83,8 +121,16 @@
 			    </div>
 			    
 			    <div id="credit" class="tab-pane fade">
-			      	<h3>Menu 3</h3>
-			      	<p>nothing</p>
+			    	<div class="panel">
+			    		<h3>Menu 3</h3>
+			      		<p>nothing</p>
+			      		
+			      		
+			    	</div>
+			      	
+			      	
+		      	
+			      	
 			    </div>
 			  </div> 
 			</div>
@@ -100,9 +146,13 @@
 				
 		</div>
 		
+		
+		
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     	<!-- Include all compiled plugins (below), or include individual files as needed -->
     	<script src="Design/js/bootstrap.min.js"></script>
+    	
+    	<script src="Design/js/volume_button.js"></script>
 	</body>
 </html>

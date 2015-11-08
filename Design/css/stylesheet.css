@@ -6,7 +6,7 @@ body {
 	background-attachment: scroll;
 	/*Change image if you have better one!!!*/
 	background-image: url(../img/dark.jpg);
-	background-repeat: no-repeat;
+	/*background-repeat: no-repeat;* some repeat problem/
 	/*Scale the background image to compeltely cover*/
 	/*prefix refers to browser*/
 	-webkit-background-size: cover;
@@ -64,3 +64,31 @@ body {
 .form_size {
 	width: 300px;
 }
+
+.panel{
+	width: 750px;
+	height: 280px;
+	background-color:#123456;
+}
+
+.player {
+	float:right;
+	width:50px;
+}
+
+.fa-volume-up {
+	color:white;
+}
+
+.fa-volume-up:hover {
+	color: yellow;
+}
+
+.fa-volume-off {
+	color:white;
+}
+
+.fa-volume-off:hover {
+	color: yellow;
+}
+
