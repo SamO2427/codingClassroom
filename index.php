@@ -1,6 +1,3 @@
-<!--<?php
-    echo "Hello World!";
-?>  -->
 
 <!DOCTYPE html>
 <html>	
@@ -27,8 +24,8 @@
 		
 		<!--background music -->
 		<audio id="background_audio" autoplay="autoplay" loop="loop" >
-      		<source src="Design/bgm/village10.ogg" type="audio/ogg" />
-      		<source src="Design/bgm/village10.mp3" type="audio/mpeg" />
+      		<source id="b1" src="Design/bgm/village10.ogg" type="audio/ogg" />
+      		<source id="b2" src="Design/bgm/village10.mp3" type="audio/mpeg" />
     	</audio>
 	</head>
 
@@ -58,7 +55,7 @@
 			      	</p>
 			      	<!--Login form -->
 					<!--<form role="form" action="account/login.php" method="post">  -->
-					<form role="form" action="" method="post">
+					<form role="form" action="./usermenu.php" method="post">
 						
 						<div class="form-group">
 							<div class="form_size">
