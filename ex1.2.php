@@ -1,6 +1,20 @@
-<!--<?php
-echo "Hello World!";
-?>  -->
+<?php
+	session_start();
+	require_once("connection.php");
+	$sql = "SELECT progress FROM account WHERE username = '{$_SESSION['login_user']}'";	
+	if($result=mysqli_query($conn,$sql))
+	{
+		$rowcount = mysqli_num_rows($result);
+	}
+	$result = mysqli_query($conn,$sql);
+	$row = $result->fetch_row();
+	if ($row[0] < 8)
+	{
+		$sql = "UPDATE account SET progress=8 WHERE username = '{$_SESSION['login_user']}'";
+	}
+	$result = $conn->query($sql);
+	mysqli_close($conn);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -303,7 +317,7 @@ echo "Hello World!";
 		</div>
 		
 		<div id="choices">
-			<a href="./ex3.php">
+			<a href="./ex1.php">
 			<button class="option">
 				Back
 			</button></a>

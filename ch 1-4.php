@@ -1,6 +1,20 @@
-<!--<?php
-echo "Hello World!";
-?>  -->
+<?php
+	session_start();
+	require_once("connection.php");
+	$sql = "SELECT progress FROM account WHERE username = '{$_SESSION['login_user']}'";	
+	if($result=mysqli_query($conn,$sql))
+	{
+		$rowcount = mysqli_num_rows($result);
+	}
+	$result = mysqli_query($conn,$sql);
+	$row = $result->fetch_row();
+	if ($row[0] < 4)
+	{
+		$sql = "UPDATE account SET progress=4 WHERE username = '{$_SESSION['login_user']}'";
+	}
+	$result = $conn->query($sql);
+	mysqli_close($conn);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -236,6 +250,7 @@ echo "Hello World!";
 			<source src="Design/bgm/village10.ogg" type="audio/ogg" />
 			<source src="Design/bgm/village10.mp3" type="audio/mpeg" />
 		</audio>
+
 	</head>
 
 	<body>

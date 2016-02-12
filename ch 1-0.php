@@ -70,7 +70,7 @@
 		</style>
     	<title>Coding Classroom for Kids</title>
 
-		<!--background music -->
+		<!--background music and voice-->
 		<audio id="background_audio" autoplay="autoplay" loop="loop" >
       		<source src="Design/bgm/village10.ogg" type="audio/ogg" />
       		<source src="Design/bgm/village10.mp3" type="audio/mpeg" />
