@@ -1,8 +1,8 @@
 <?php
 	//database config
 	$dbServer 		= "localhost";
-	$dbUsername 	= 'root';
-	$dbPassword 	= '';
+	$dbUsername 	= "root";
+	$dbPassword 	= "love!sung";
 	$db 			= "codingClassroom";
 	
 	//reference: w3schools
