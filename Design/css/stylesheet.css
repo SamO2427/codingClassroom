@@ -1,12 +1,13 @@
 /*for index.php*/
+html,body{
+	height:100%;
+	width:100%;
+}
+
 body {
 	font-family: 'Open Sans';
 	color: #FFF;
-	/* background can be scrolled (default)*/
-	background-attachment: scroll;
-	/*Change image if you have better one!!!*/
-	background-image: url(../img/dark.jpg);
-	/*background-repeat: no-repeat;* some repeat problem/
+	background: url(../img/index.jpg) no-repeat center fixed; 
 	/*Scale the background image to compeltely cover*/
 	/*prefix refers to browser*/
 	-webkit-background-size: cover;
@@ -32,13 +33,15 @@ body {
 #footer {
 	width: 800px;
 	height:50px;
-	background-color: #756;
+	background-color: //#756;
 	margin: 0 auto;
 	
 	-webkit-border-radius: 30px;
 	-moz-border-radius: 30px;
 	border-radius: 30px;
-
+	
+	/*transparent text*/
+	color: rgba(0, 0, 0, 0.9);
 }
 
 #footer_text {
@@ -46,6 +49,7 @@ body {
 	padding-left: 10px;
 	padding-top: 5px;
 }
+
 
 #menu {
 	/*rounded-corner box*/
@@ -57,7 +61,14 @@ body {
 	height:400px;
 	
 	color: #222;
-	background-color:#EEE;
+	background-color://#EEE;
+	margin: 0 auto;
+	
+	/*opacity: 0.8;*/
+}
+
+#wrapper {
+	width:95%;
 	margin: 0 auto;
 }
 
@@ -92,3 +103,6 @@ body {
 	color: yellow;
 }
 
+#success {
+	color:#FA5858;
+}
