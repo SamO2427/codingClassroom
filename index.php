@@ -1,4 +1,27 @@
+<?php
+//load login script
+include('System/login.php');
 
+//if the user has already login, redirect to usermenu
+if(isset($_SESSION['login_user']) && $_SESSION['login_user']!="" ){
+//header("location: /codingClassroom/usermenu.php");
+}
+
+//remove code message when user refreshes the page
+if (isset($_GET['code']))
+{
+	if(empty($_SESSION['show_message']))
+	{
+		$_SESSION['show_message'] = 1;
+	}
+	else 
+	{
+		unset($_SESSION['show_message']);
+		//header('Location: /codingClassroom/index.php');	
+	}
+}
+
+?>
 <!DOCTYPE html>
 <html>	
 	<head>
@@ -29,7 +52,7 @@
     	</audio>
 	</head>
 
-	<body>
+	<body onload="startTime()">
 	
 		<div id="header">
 			<span id="headline">Coding Classroom for Kids</span>
@@ -38,29 +61,36 @@
 		</div>
 		<!--Bootstrap tab-->
 		<div id="menu">
-			<div class="container">
-			  <h2><i>Menu Pill</i></h2>
+			<div id="wrapper">
+			  <h2><i>Welcome</i></h2>
 			  <ul class="nav nav-pills">
-			    <li class="active"><a data-toggle="pill" href="#login">Login</a></li>
+			    <li class="active"><a data-toggle="pill" href="#login"><b>Login</b></a></li>
 			    <li><a data-toggle="pill" href="#register">Register</a></li>
-			    <li><a data-toggle="pill" href="#setting">Setting</a></li>
+			    <li><a data-toggle="pill" href="#about">About</a></li>
 			    <li><a data-toggle="pill" href="#credit">Credit</a></li>
 			  </ul>
 		
-			  <div class="tab-content">
+			  <div class="tab-content" style="width:750px;">
 			  	<div id="login" class="tab-pane fade in active">
+			  		
+			  		
+			  		<div id="box1" style="height:320px;width:400px;background-color: #567892; position:relative;margin-top: -60px; float: right;" >
+			  			picture or animation to fill in this box
+			  		</div>
+			  		
+			  		
+			  		
 			    	<h3>Hello!</h3>
 			      	<p>New player please enroll first, have fun
 			      		<i class="fa fa-smile-o fa-2x"></i>
 			      	</p>
-			      	<!--Login form -->
-					<!--<form role="form" action="account/login.php" method="post">  -->
-					<form role="form" action="./usermenu.php" method="post">
+		      	<!--Login form -->
+					<form role="form" action="System/login.php" method="post">
 						
 						<div class="form-group">
 							<div class="form_size">
-								<label for="username">Username:</label>
-								<input type="text" class="form-control" id="username" name="username" required placeholder="Enter userName">
+								<label for="username">Username:</label> 
+								<input type="text" class="form-control" id="username" name="username" maxlength="20" placeholder="Enter userName">
 							</div>
 						</div>
 					
@@ -71,17 +101,33 @@
 							</div>
 						</div>
 						
-						<button type="submit" class="btn btn-default">Play</button>
+						<button type="submit" name="submit1" value="login" class="btn btn-default">Play</button>
+						<button type="reset" class="btn btn-default">Clear</button>
+						<span style="color: #FA5858;">
+							 <br /><i>
+				               <?php
+				                 $code_id = isset($_GET['code']) ? (int)$_GET['code'] : 0;
+				                  if ($code_id == 1) {
+				                  echo "Invalid username or password!";
+				                } ?>
+				                </i></span>
 					</form>
-			      	
-			    </div>
+<!--					<div style="position: relative; top:-45px; left:130px; height:50px; width: 600px;padding-top: 5px; background-color: ">
+						<div class="alert alert-danger alert-dismissible" role="alert" >
+  							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  							<strong>Warning!</strong> Wrong username or password.
+						</div> 
+					</div>
+		-->	    </div>
 			    
 			    <div id="register" class="tab-pane fade">
+			    	<div id="box2" style="height:320px;width:400px;background-color: #567892; position:relative;margin-top: -40px; float: right;" >
+			  			picture or animation to fill in this box
+			  		</div>
 			      	
 			      	
 			      	<!--Register form -->
-					<!--<form role="form" action="account/login.php" method="post">  -->
-					<form role="form" action="" method="post">
+					<form role="form" action="System/login.php" method="post">
 						
 						<div class="form-group">
 							<div class="form_size">
@@ -104,20 +150,51 @@
 							</div>
 						</div>
 						
-						<button type="submit" class="btn btn-default">Register</button>
+						<button type="submit" name="submit2" value="register" class="btn btn-default">Register</button>
+						<button type="reset" class="btn btn-default">Clear</button>
+						<span id="success">
+							 <br /><i>
+							 	
+				               <?php 
+				                  $code_id = isset($_GET['code']) ? (int)$_GET['code'] : 0;
+								  //change to red color
+								  echo '<style type="text/css">
+									        #success {color:#FA5858;}
+									    </style>';
+				                  if ($code_id == 2) {
+				                    echo "Password mismatch!";
+				                  }
+				                  else if ($code_id == 3) {
+				                    echo "This username has been used!";
+				                  }
+								  else if ($code_id == 4) {
+								  	//change to green color for success
+								  	echo '<style type="text/css">
+									        #success {
+									            color:#1aff1a; 
+									        }
+									        </style>';
+								  	echo "Register Successfully!";
+								  }
+				                ?>
+				                </i></span>
 					</form>
 			      	
 			      	
 			      	
 			      	
 			    </div>
-			    
-			    <div id="setting" class="tab-pane fade">
+			    <!--stat -->
+			    <div id="about" class="tab-pane fade">
+			    	<div id="box3" style="height:320px;width:400px;background-color: #567892; position:relative;margin-top: -60px; float: right;" >
+			  			picture or animation to fill in this box
+			  		</div>
 			      	<h3>Menu 2</h3>
 			      	<p>nothing</p>
 			    </div>
 			    
 			    <div id="credit" class="tab-pane fade">
+			    	
 			    	<div class="panel">
 			    		<h3>Menu 3</h3>
 			      		<p>nothing</p>
@@ -135,8 +212,12 @@
 		
 		<div id="footer">
 			<div id="footer_text">
-				<b>Footer</b> &nbsp; &nbsp;
+				HKUST CS SC1 <i class="fa fa-copyright"></i> &nbsp; 2016
+				<i class="fa fa-internet-explorer fa-1g"></i>
+				<i class="fa fa-firefox fa-1g"></i>
 				<i class="fa fa-chrome fa-1g"></i>
+				
+				<span id="time"style="float:right; margin-right: 20px;"></span>
 			</div>
 			
 			    
@@ -149,7 +230,8 @@
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     	<!-- Include all compiled plugins (below), or include individual files as needed -->
     	<script src="Design/js/bootstrap.min.js"></script>
-    	
+    	<script src="Design/js/clock.js"></script>
     	<script src="Design/js/volume_button.js"></script>
+    	<script src="Design/js/last_pill.js"></script>
 	</body>
 </html>
