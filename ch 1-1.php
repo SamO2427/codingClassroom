@@ -1,6 +1,22 @@
-<!--<?php
-echo "Hello World!";
-?>  -->
+<?php
+	session_start();
+	require_once("connection.php");
+	$sql = "SELECT progress FROM account WHERE username = '{$_SESSION['login_user']}'";	
+	if($result=mysqli_query($conn,$sql))
+	{
+		$rowcount = mysqli_num_rows($result);
+	}
+	$result = mysqli_query($conn,$sql);
+	$row = $result->fetch_row();
+	if ($row[0] < 1)
+	{
+		$sql = "UPDATE account SET progress=1 WHERE username = '{$_SESSION['login_user']}'";
+	}
+	$result = $conn->query($sql);
+	mysqli_close($conn);
+?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -228,9 +244,11 @@ echo "Hello World!";
 					document.getElementById('dbox').style.display = "none";
 					document.getElementById('btn3').disabled = "true";
 				}
+				
 			}
 
 			var Alert3 = new CustomAlert3();
+			
 		</script>
 		<title>Coding Classroom for Kids</title>
 

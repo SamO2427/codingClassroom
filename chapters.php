@@ -1,6 +1,15 @@
-<!--<?php
-    echo "Hello World!";
-?>  -->
+<?php
+	session_start();
+	require_once("connection.php");
+	$sql = "SELECT progress FROM account WHERE username = '{$_SESSION['login_user']}'";	
+	if($result=mysqli_query($conn,$sql))
+	{
+		$rowcount = mysqli_num_rows($result);
+	}
+	$result=mysqli_query($conn,$sql);
+	$row = $result->fetch_row();
+	mysqli_close($conn);
+?>
 
 <!DOCTYPE html>
 <html>	
@@ -44,7 +53,6 @@
 				font-size: 80%;
 				background-color: yellow;
 				cursor: pointer;
-				color: black;
 				float: left;
 				margin: 5%;
 			}
@@ -56,9 +64,51 @@
       		<source src="Design/bgm/village10.ogg" type="audio/ogg" />
       		<source src="Design/bgm/village10.mp3" type="audio/mpeg" />
     	</audio>
+		
+		<script>
+		function bigchlock(){
+			var x = <?php echo json_encode($row[0]);?>;
+			if(x >= 10)
+			{
+				document.getElementById('button2').removeAttribute('disabled');
+			}
+			else
+			{
+				document.getElementById('button2').disabled = "true";
+			}
+			
+			if(x >= 20)
+			{
+				document.getElementById('button3').removeAttribute('disabled');
+			}
+			else
+			{
+				document.getElementById('button3').disabled = "true";
+			}
+			
+			if(x >= 30)
+			{
+				document.getElementById('button4').removeAttribute('disabled');
+			}
+			else
+			{
+				document.getElementById('button4').disabled = "true";
+			}
+			
+			if(x >= 40)
+			{
+				document.getElementById('button5').removeAttribute('disabled');
+			}
+			else
+			{
+				document.getElementById('button5').disabled = "true";
+			}
+			
+		}
+		</script>
 	</head>
 
-	<body>
+	<body onload="bigchlock()">
 	
 		<div id="header">
 			<span id="headline">Welcome to the Coding Classroom</span>
@@ -67,14 +117,14 @@
 		
 		<div id="menu">
 			<p>Chapters</p>
-			<a href="./chapter1.php"><button class="option">1</button></a>
-			<a href="./chapter2.php"><button class="option">2</button></a>
+			<a href="./chapter1.php"><button id="button1" class="option">1</button></a>
+			<a href="./chapter2.php"><button id="button2" class="option">2</button></a>
 			<br>
-			<a href="./chapter3.php"><button class="option">3</button></a>
-			<a href="./chapter4.php"><button class="option">4</button></a>
+			<a href="./chapter3.php"><button id="button3" class="option">3</button></a>
+			<a href="./chapter4.php"><button id="button4" class="option">4</button></a>
 			<br>
-			<a href="./chapter5.php"><button class="option">5</button></a>
-			<a href="./usermenu.php"><button class="option">Return</button></a>
+			<a href="./chapter5.php"><button id="button5" class="option">5</button></a>
+			<a href="./usermenu.php"><button id="button6" class="option">Return</button></a>
 		</div>
 		
 

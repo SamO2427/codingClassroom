@@ -1,6 +1,27 @@
-<!--<?php
-echo "Hello World!";
-?>  -->
+<?php
+	session_start();
+	require_once("connection.php");
+	$sql = "SELECT progress FROM account WHERE username = '{$_SESSION['login_user']}'";	
+	if($result=mysqli_query($conn,$sql))
+	{
+		$rowcount = mysqli_num_rows($result);
+	}
+	$result = mysqli_query($conn,$sql);
+	$row = $result->fetch_row();
+	if ($row[0] < 10)
+	{
+		$sql = "UPDATE account SET progress=10 WHERE username = '{$_SESSION['login_user']}'";
+	}
+	$result = $conn->query($sql);
+	$sql = "SELECT progress FROM account WHERE username = '{$_SESSION['login_user']}'";	
+	if($result=mysqli_query($conn,$sql))
+	{
+		$rowcount = mysqli_num_rows($result);
+	}
+	$result=mysqli_query($conn,$sql);
+	$row = $result->fetch_row();
+	mysqli_close($conn);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -76,9 +97,77 @@ echo "Hello World!";
 			<source src="Design/bgm/village10.ogg" type="audio/ogg" />
 			<source src="Design/bgm/village10.mp3" type="audio/mpeg" />
 		</audio>
+		
+		<script>
+		function ch2lock () {
+			var x = <?php echo json_encode($row[0]); ?>;
+			if(x >= 11)
+			{
+				document.getElementById('button2').removeAttribute('disabled');
+			}
+			else
+			{
+				document.getElementById('button2').disabled = "true";
+			}
+			
+			if(x >= 12)
+			{
+				document.getElementById('button3').removeAttribute('disabled');
+			}
+			else
+			{
+				document.getElementById('button3').disabled = "true";
+			}
+			
+			if(x >= 13)
+			{
+				document.getElementById('button4').removeAttribute('disabled');
+			}
+			else
+			{
+				document.getElementById('button4').disabled = "true";
+			}
+			
+			if(x >= 14)
+			{
+				document.getElementById('button5').removeAttribute('disabled');
+			}
+			else
+			{
+				document.getElementById('button5').disabled = "true";
+			}
+			
+			if(x >= 15)
+			{
+				document.getElementById('button6').removeAttribute('disabled');
+			}
+			else
+			{
+				document.getElementById('button6').disabled = "true";
+			}
+			
+			if(x >= 16)
+			{
+				document.getElementById('button7').removeAttribute('disabled');
+			}
+			else
+			{
+				document.getElementById('button7').disabled = "true";
+			}
+			
+			if(x >= 17)
+			{
+				document.getElementById('button8').removeAttribute('disabled');
+			}
+			else
+			{
+				document.getElementById('button8').disabled = "true";
+			}
+		}
+		</script>
 	</head>
 
-	<body>
+	<body onload = "ch2lock()">
 
 		<div id="header">
 			<span id="headline">Welcome to the Coding Classroom</span>
@@ -90,38 +179,38 @@ echo "Hello World!";
 				Chapter 2: Control Flow
 			</p>
 			<a href="./ch 2-0.php">
-			<button class="options">
+			<button id="button1" class="options">
 				2-0
 			</button></a>
 			<a href="./ch 2-1.php">
-			<button class="options">
+			<button id="button2" class="options">
 				2-1
 			</button></a>
 			<br>
 			<a href="./ch 2-2.php">
-			<button class="options">
+			<button id="button3" class="options">
 				2-2
 			</button></a>
 			<a href="./ch 2-3.php">
-			<button class="options">
+			<button id="button4" class="options">
 				2-3
 			</button></a>
 			<br>
 			<a href="./ch 2-4.php">
-			<button class="options">
+			<button id="button5" class="options">
 				2-4
 			</button></a>
 			<a href="./ch 2-5.php">
-			<button class="options">
+			<button id="button6" class="options">
 				2-5
 			</button></a>
 			<br>
 			<a href="./ch 2-6.php">
-			<button class="options">
+			<button id="button7" class="options">
 				2-6
 			</button></a>
 			<a href="./ex2.php">
-			<button class="options">
+			<button id="button8" class="options">
 				Ex2
 			</button></a>
 		</div>
